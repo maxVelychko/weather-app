@@ -7,19 +7,28 @@ export default class App extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.fetchWeather();
+    }
+
     render() {
+        console.log("action-this.props.fetching", this.props);
         return (
             <View style={styles.container}>
-                <View style={styles.header}>
-                    <MaterialCommunityIcons size={48} name="weather-sunny"/>
-                    <Text style={styles.mediumText}>Temperature˚</Text>
-                </View>
-                <View style={styles.body}>
-                    <Text style={styles.mediumText}>So sunny</Text>
-                    <Text style={styles.smallText}>It hurts my eyes!</Text>
-                </View>
+                {this.props.fetching ? <Text>Fetching The Weather</Text> : (
+                    <View style={styles.weatherContainer}>
+                        <View style={styles.header}>
+                            <MaterialCommunityIcons size={48} name="weather-sunny"/>
+                            <Text style={styles.mediumText}>Temperature˚</Text>
+                        </View>
+                        <View style={styles.body}>
+                            <Text style={styles.mediumText}>So sunny</Text>
+                            <Text style={styles.smallText}>It hurts my eyes!</Text>
+                        </View>
+                    </View>
+                )}
             </View>
-        );
+        )
     }
 }
 
@@ -27,6 +36,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#f7b733',
+    },
+    weatherContainer: {
+        flex: 1,
     },
     header: {
         flex: 1,

@@ -1,13 +1,21 @@
-const initialState = {};
+const initialState = {
+    fetching: false,
+    weather: {},
+};
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case "rock":
+        case "REQUEST_WEATHER":
             return Object.assign({}, state, {
-                rock: action.rock,
+                fetching: true,
+            });
+        case "RECEIVE_WEATHER":
+            return Object.assign({}, state, {
+                fetching: false,
+                weather: action.data,
             });
         default:
-            return state
+            return state;
     }
 };
 
