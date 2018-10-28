@@ -3,6 +3,10 @@ import {StyleSheet, View, Text} from 'react-native';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 
 export default class App extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <View style={styles.container}>
