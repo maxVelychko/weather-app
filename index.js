@@ -6,6 +6,8 @@ import thunkMiddleware from 'redux-thunk';
 import reducer from "./reducer";
 import AppContainer from "./AppContainer";
 
+console.disableYellowBox = true;
+
 const store = createStore(reducer, applyMiddleware(thunkMiddleware));
 
 class Root extends React.Component {

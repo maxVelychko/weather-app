@@ -4,7 +4,7 @@ import App from "./App";
 
 const mapStateToProps = state => {
     return {
-        fetching: state.fetching,
+        fetched: state.fetched,
         weather: state.weather,
     }
 };

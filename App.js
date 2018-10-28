@@ -1,6 +1,8 @@
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
+import PropTypes from 'prop-types';
+import weatherConditions from "./utils/WeatherConditions";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -12,21 +14,31 @@ export default class App extends React.Component {
     }
 
     render() {
-        console.log("action-this.props.fetching", this.props);
+        if (!this.props.fetched) {
+            return (
+                <View style={styles.container} >
+                    <Text>Fetching The Weather</Text>
+                </View>
+            )
+        }
+
+        const { temperature, weather, city } = this.props.weather;
         return (
-            <View style={styles.container}>
-                {this.props.fetching ? <Text>Fetching The Weather</Text> : (
-                    <View style={styles.weatherContainer}>
-                        <View style={styles.header}>
-                            <MaterialCommunityIcons size={48} name="weather-sunny"/>
-                            <Text style={styles.mediumText}>Temperature˚</Text>
-                        </View>
-                        <View style={styles.body}>
-                            <Text style={styles.mediumText}>So sunny</Text>
-                            <Text style={styles.smallText}>It hurts my eyes!</Text>
-                        </View>
+            <View style={[styles.container, { backgroundColor: weatherConditions[weather].color }]}>
+                <View style={styles.weatherContainer}>
+                    <View style={styles.header}>
+                        <MaterialCommunityIcons
+                            size={48}
+                            name={weatherConditions[weather].icon}
+                        />
+                        <Text style={styles.mediumText}>{temperature}˚</Text>
+                        <Text style={styles.mediumText}>{city}˚</Text>
                     </View>
-                )}
+                    <View style={styles.body}>
+                        <Text style={styles.mediumText}>{weatherConditions[weather].title}</Text>
+                        <Text style={styles.smallText}>{weatherConditions[weather].subtitle}</Text>
+                    </View>
+                </View>
             </View>
         )
     }
@@ -59,3 +71,8 @@ const styles = StyleSheet.create({
         fontSize: 24,
     },
 });
+
+App.propTypes = {
+    fetched: PropTypes.boolean,
+    weather: PropTypes.object,
+};

@@ -3,21 +3,22 @@ const apiUrl = "http://api.openweathermap.org/data/2.5/weather";
 
 export const fetchWeather = () => {
     return (dispatch) => {
-        dispatch(requestWeather());
-        return fetch(`${apiUrl}?APPID=${apiKey}&q=London&units=metric`)
+        return fetch(`${apiUrl}?APPID=${apiKey}&q=Berlin&units=metric`)
             .then((response) => {
                 return response.json();
             })
             .then((data) => {
+                console.log("action-weatherConditions[weather]", data);
                 dispatch(receiveWeather(data));
             });
     };
 };
 
-export const requestWeather = (data) => ({
-    type: 'REQUEST_WEATHER', data,
-});
-
 export const receiveWeather = (data) => ({
-    type: 'RECEIVE_WEATHER', data,
+    type: 'RECEIVE_WEATHER',
+    data: {
+        temperature: data.main.temp,
+        weather: data.weather[0].main,
+        city: data.name,
+    },
 });
