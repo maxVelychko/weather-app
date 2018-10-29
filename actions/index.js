@@ -8,7 +8,6 @@ export const fetchWeather = () => {
                 return response.json();
             })
             .then((data) => {
-                console.log("action-weatherConditions[weather]", data);
                 dispatch(receiveWeather(data));
             });
     };

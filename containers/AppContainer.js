@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { fetchWeather } from "./actions";
-import App from "./App";
+import { fetchWeather } from "../actions/index";
+import App from "../components/App";
 
 const mapStateToProps = state => {
     return {

@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 import PropTypes from 'prop-types';
-import weatherConditions from "./utils/WeatherConditions";
+import weatherConditions from "../utils/WeatherConditions";
 
 export default class App extends React.Component {
     constructor(props) {

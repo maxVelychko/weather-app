@@ -3,8 +3,8 @@ import React from 'react';
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import reducer from "./reducer";
-import AppContainer from "./AppContainer";
+import reducer from "./reducers";
+import AppContainer from "./containers/AppContainer";
 
 console.disableYellowBox = true;
 
