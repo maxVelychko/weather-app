@@ -1,9 +1,10 @@
 const apiKey = "494b4ddeec5ea5aa7c917ade630337aa";
 const apiUrl = "http://api.openweathermap.org/data/2.5/weather";
 
-export const fetchWeather = () => {
+export const fetchWeather = (city) => {
+    let cityName = city ? city : "New York";
     return (dispatch) => {
-        return fetch(`${apiUrl}?APPID=${apiKey}&q=Berlin&units=metric`)
+        return fetch(`${apiUrl}?APPID=${apiKey}&q=${cityName}&units=metric`)
             .then((response) => {
                 return response.json();
             })
