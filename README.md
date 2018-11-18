@@ -1,4 +1,4 @@
-# weatherApp
+# weather-app
 React Native App with Open Weather API - https://openweathermap.org/api
 
 ## App Screenshot
